@@ -1,0 +1,38 @@
+name: Build VPM listing
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['source.json', 'scripts/**', 'tests/**', '.github/workflows/listing.yml']
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: vpm-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: python3 -m unittest discover -s tests -v
+      - name: Validate releases and build index.json
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/listing.py
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        id: deployment

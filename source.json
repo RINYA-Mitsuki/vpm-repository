@@ -1,0 +1,9 @@
+{
+  "name": "Mitsuboshi_Studio VPM Repository",
+  "id": "com.mitsuboshi-studio.vpm",
+  "author": "Mitsuboshi_Studio",
+  "url": "https://rinya-mitsuki.github.io/vpm-repository/index.json",
+  "githubRepos": [
+    "RINYA-Mitsuki/unity-power-rename"
+  ]
+}
