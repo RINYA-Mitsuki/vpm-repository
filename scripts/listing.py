@@ -90,6 +90,7 @@ def main():
     else: preserve(previous,result)
     out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
     (out/'index.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (out/'add.html').write_text("<!doctype html>\n<html lang=\"ja\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Mitsuboshi_Studio — VCCに追加</title>\n<style>body{font:18px/1.8 system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;color:#eee;background:#171923}a.button{display:inline-block;background:#72d9cb;color:#122321;padding:14px 28px;border-radius:10px;font-weight:bold;text-decoration:none}p{color:#c6cbd5}</style>\n<h1>Mitsuboshi_Studio</h1><h2>VCCにリポジトリを追加</h2>\n<p>VCCを開きます。ブラウザーに確認が表示されたら「開く」を選び、VCCでリポジトリの追加を確定してください。</p>\n<a class=\"button\" id=\"add\" href=\"vcc://vpm/addRepo?url=https%3A%2F%2Frinya-mitsuki.github.io%2Fvpm-repository%2Findex.json\">VCCを開いて追加</a>\n<p>自動で開かない場合は、上のボタンを押してください。VCCのインストールが必要です。</p>\n<p>Unity Power Rename の試験版を表示するには、VCCで「Show Pre-Release Packages」を有効にしてください。</p>\n<script>window.location.href=document.getElementById('add').href;</script></html>\n",encoding='utf-8')
     (out/'.nojekyll').touch()
     print('Validated listing:',sum(len(p['versions']) for p in result['packages'].values()),'versions')
 
