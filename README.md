@@ -2,13 +2,13 @@
 
 Unity Editor ツールを VRChat Creator Companion (VCC) で導入・更新するための共通 Listing です。
 
-## VCC に追加
+## VCCに追加
 
-VCC の Settings → Packages → Add Repository に次の URL を入力します。
+### [▶ クリックしてVCCを開く](https://rinya-mitsuki.github.io/vpm-repository/add.html)
 
-https://rinya-mitsuki.github.io/vpm-repository/index.json
+リンクをクリックするとVCCが開きます。ブラウザーの確認で「開く」を選び、VCC内でリポジトリの追加を確定してください。自動で開かない場合は、リンク先の「VCCを開いて追加」を押してください。
 
-[VCC へ追加](vcc://vpm/addRepo?url=https%3A%2F%2Frinya-mitsuki.github.io%2Fvpm-repository%2Findex.json)
+登録後はプロジェクトの Manage Project から Unity Power Rename を追加できます。beta版の表示には **Show Pre-Release Packages** を有効にしてください。
 
 最初のパッケージは **Unity Power Rename 1.0.0-beta.1**。試験版を表示するには VCC の Show Pre-Release Packages を有効にしてください。プロジェクトの Manage Project から追加・更新できます。旧版スクリプトを使用中の場合は、パッケージ README の移行手順を先に確認してください。
 
