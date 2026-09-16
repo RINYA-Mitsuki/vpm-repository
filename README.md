@@ -8,9 +8,21 @@ Unity Editor ツールを VRChat Creator Companion (VCC) で導入・更新す�
 
 リンクをクリックするとVCCが開きます。ブラウザーの確認で「開く」を選び、VCC内でリポジトリの追加を確定してください。自動で開かない場合は、リンク先の「VCCを開いて追加」を押してください。
 
-登録後はプロジェクトの Manage Project から Unity Power Rename を追加できます。beta版の表示には **Show Pre-Release Packages** を有効にしてください。
+登録後はプロジェクトの Manage Project から各ツールを追加・更新できます。すべて正式版1.0.0のため、試験版表示の設定は不要です。旧版スクリプトを使用中の場合は、各パッケージREADMEの移行手順を先に確認してください。
 
-最初のパッケージは **Unity Power Rename 1.0.0-beta.1**。試験版を表示するには VCC の Show Pre-Release Packages を有効にしてください。プロジェクトの Manage Project から追加・更新できます。旧版スクリプトを使用中の場合は、パッケージ README の移行手順を先に確認してください。
+## 掲載ツール
+
+| ツール | 版 | 追加要件 |
+|---|---:|---|
+| Unity Power Rename | 1.0.0 | なし |
+| Animation Property Builder | 1.0.0 | なし |
+| Animator Make Transition Hotkey | 1.0.0 | Unity 2022.3.22f1向け |
+| Animator WD ON Converter | 1.0.0 | なし |
+| Animator Write Defaults Bulk | 1.0.0 | なし |
+| Better Animator Transition Copy | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
+| PCS Animator Conflict Scanner | 1.0.0 | なし |
+| VRC Contact Counter | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
+| WD Property Completer | 1.0.0 | なし |
 
 ## 運用
 
@@ -32,3 +44,7 @@ Settings → Pages → Build and deployment → Source を **GitHub Actions** �
 ## 検証状況
 
 Release と Listing の公開、匿名ダウンロード、SHA-256 の一致を確認済みです。詳細と未検証項目は [検証結果](docs/VERIFICATION.md) を参照してください。
+## AIによる制作について
+
+ツール本体、VPMパッケージ化、配布用リポジトリおよび自動化環境は、すべてAIを利用して制作しています。内容を確認したうえで、ご自身の判断と責任で使用してください。
+
