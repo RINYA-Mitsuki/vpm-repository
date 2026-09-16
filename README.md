@@ -8,7 +8,7 @@ Unity Editor ツールを VRChat Creator Companion (VCC) で導入・更新す�
 
 リンクをクリックするとVCCが開きます。ブラウザーの確認で「開く」を選び、VCC内でリポジトリの追加を確定してください。自動で開かない場合は、リンク先の「VCCを開いて追加」を押してください。
 
-登録後はプロジェクトの Manage Project から各ツールを追加・更新できます。すべて正式版1.0.0のため、試験版表示の設定は不要です。旧版スクリプトを使用中の場合は、各パッケージREADMEの移行手順を先に確認してください。
+登録後はプロジェクトの Manage Project から各ツールを追加・更新できます。掲載版はすべて正式版のため、試験版表示の設定は不要です。旧版スクリプトを使用中の場合は、各パッケージREADMEの移行手順を先に確認してください。
 
 ## 掲載ツール
 
@@ -19,6 +19,7 @@ Unity Editor ツールを VRChat Creator Companion (VCC) で導入・更新す�
 | Animator Make Transition Hotkey | 1.0.0 | Unity 2022.3.22f1向け |
 | Animator Write Defaults Bulk | 1.0.0 | なし |
 | Better Animator Transition Copy | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
+| CGE-ND | 0.1.5 | VRChat SDK Avatars 3.10.4以上・4未満、CGE 3.3.1以上・4未満、Modular Avatar 1.18.7以上・2未満 |
 | VRC Contact Counter | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
 | WD Property Completer | 1.0.0 | なし |
 
