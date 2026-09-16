@@ -17,10 +17,8 @@ Unity Editor ツールを VRChat Creator Companion (VCC) で導入・更新す�
 | Unity Power Rename | 1.0.0 | なし |
 | Animation Property Builder | 1.0.0 | なし |
 | Animator Make Transition Hotkey | 1.0.0 | Unity 2022.3.22f1向け |
-| Animator WD ON Converter | 1.0.0 | なし |
 | Animator Write Defaults Bulk | 1.0.0 | なし |
 | Better Animator Transition Copy | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
-| PCS Animator Conflict Scanner | 1.0.0 | なし |
 | VRC Contact Counter | 1.0.0 | VRChat SDK Base 3.10.4以上・4未満 |
 | WD Property Completer | 1.0.0 | なし |
 

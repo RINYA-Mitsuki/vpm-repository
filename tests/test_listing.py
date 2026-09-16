@@ -37,6 +37,8 @@ class ListingTests(unittest.TestCase):
             with self.assertRaises(ValueError):preserve(previous,altered)
         altered=copy.deepcopy(previous);altered['packages']['com.example.tool']['versions']['1.0.0']['url']='changed'
         with self.assertRaises(ValueError):preserve(previous,altered)
+        preserve(previous,{'id':'test','packages':{}},['com.example.tool'])
+        with self.assertRaises(ValueError):preserve(previous,{'id':'test','packages':{}},['bad id'])
     def test_pagination_and_drafts(self):
         source={'name':'Test','id':'test','author':'Owner','url':'https://example.com/index.json','githubRepos':[self.repo]}
         def get(url,api=False):

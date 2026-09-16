@@ -7,11 +7,13 @@
     "RINYA-Mitsuki/unity-power-rename",
     "RINYA-Mitsuki/animation-property-builder",
     "RINYA-Mitsuki/animator-make-transition-hotkey",
-    "RINYA-Mitsuki/animator-wd-on-converter",
     "RINYA-Mitsuki/animator-write-defaults-bulk",
     "RINYA-Mitsuki/better-animator-transition-copy",
-    "RINYA-Mitsuki/pcs-animator-conflict-scanner",
     "RINYA-Mitsuki/vrc-contact-counter",
     "RINYA-Mitsuki/wd-property-completer"
+  ],
+  "removedPackages": [
+    "com.mitsuboshi-studio.animator-wd-on-converter",
+    "com.mitsuboshi-studio.pcs-animator-conflict-scanner"
   ]
 }

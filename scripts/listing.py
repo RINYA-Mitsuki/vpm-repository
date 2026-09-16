@@ -49,9 +49,13 @@ def release_manifest(repo,release,download=fetch):
     result['zipSHA256']=hashlib.sha256(data).hexdigest()
     return result
 
-def preserve(previous,current):
+def preserve(previous,current,removed_packages=()):
     if previous.get('id')!=current['id']: raise ValueError('Listing ID changed')
+    removed=tuple(removed_packages)
+    if len(set(removed))!=len(removed) or any(not re.fullmatch(r'[a-z0-9]+(?:[.-][a-z0-9]+)+',name) for name in removed):
+        raise ValueError('Invalid/duplicate removed package ID')
     for name,package in previous.get('packages',{}).items():
+        if name in removed: continue
         for version,old in package['versions'].items():
             new=current['packages'].get(name,{}).get('versions',{}).get(version)
             if new is None: raise ValueError(f'Previously published version disappeared: {name} {version}')
@@ -87,11 +91,12 @@ def main():
     try: previous=json.loads(fetch(source['url']))
     except HTTPError as e:
         if e.code!=404: raise
-    else: preserve(previous,result)
+    else: preserve(previous,result,source.get('removedPackages',[]))
     out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
     (out/'index.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    (out/'add.html').write_text("<!doctype html>\n<html lang=\"ja\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Mitsuboshi_Studio — VCCに追加</title>\n<style>body{font:18px/1.8 system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;color:#eee;background:#171923}a.button{display:inline-block;background:#72d9cb;color:#122321;padding:14px 28px;border-radius:10px;font-weight:bold;text-decoration:none}p{color:#c6cbd5}</style>\n<h1>Mitsuboshi_Studio</h1><h2>VCCにリポジトリを追加</h2>\n<p>VCCを開きます。ブラウザーに確認が表示されたら「開く」を選び、VCCでリポジトリの追加を確定してください。</p>\n<a class=\"button\" id=\"add\" href=\"vcc://vpm/addRepo?url=https%3A%2F%2Frinya-mitsuki.github.io%2Fvpm-repository%2Findex.json\">VCCを開いて追加</a>\n<p>自動で開かない場合は、上のボタンを押してください。VCCのインストールが必要です。</p>\n<p>Unity Power Rename の試験版を表示するには、VCCで「Show Pre-Release Packages」を有効にしてください。</p>\n<script>window.location.href=document.getElementById('add').href;</script></html>\n",encoding='utf-8')
+    (out/'add.html').write_text("<!doctype html>\n<html lang=\"ja\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Mitsuboshi_Studio — VCCに追加</title>\n<style>body{font:18px/1.8 system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;color:#eee;background:#171923}a.button{display:inline-block;background:#72d9cb;color:#122321;padding:14px 28px;border-radius:10px;font-weight:bold;text-decoration:none}p{color:#c6cbd5}</style>\n<h1>Mitsuboshi_Studio</h1><h2>VCCにリポジトリを追加</h2>\n<p>VCCを開きます。ブラウザーに確認が表示されたら「開く」を選び、VCCでリポジトリの追加を確定してください。</p>\n<a class=\"button\" id=\"add\" href=\"vcc://vpm/addRepo?url=https%3A%2F%2Frinya-mitsuki.github.io%2Fvpm-repository%2Findex.json\">VCCを開いて追加</a>\n<p>自動で開かない場合は、上のボタンを押してください。VCCのインストールが必要です。</p>\n<p>登録後、Manage Projectから各ツールを追加・更新できます。</p>\n<script>window.location.href=document.getElementById('add').href;</script></html>\n",encoding='utf-8')
     (out/'.nojekyll').touch()
     print('Validated listing:',sum(len(p['versions']) for p in result['packages'].values()),'versions')
 
 if __name__=='__main__': main()
+
